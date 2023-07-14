@@ -1,0 +1,23 @@
+server:
+  port: 8888
+
+
+spring:
+  security:
+    user:
+      name: admin
+      password: admin
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/garikhgh/spring-cloud
+          default-label: main
+          search-paths:
+          - station*
+#          repos:
+#            perf:
+#              pattern: '*/perf'
+encrypt:
+  key: valiko
+#              uri: https://github.com/garikhgh/spring-cloud
