@@ -1,5 +1,8 @@
 server:
   port: 8888
+encrypt:
+  key: valiko
+  api: https://github.com/garikhgh/spring-cloud
 
 
 spring:
@@ -10,6 +13,8 @@ spring:
   cloud:
     config:
       server:
+        encrypt:
+          enabled: false
         git:
           uri: https://github.com/garikhgh/spring-cloud
           default-label: main
@@ -18,6 +23,3 @@ spring:
 #          repos:
 #            perf:
 #              pattern: '*/perf'
-encrypt:
-  key: valiko
-#              uri: https://github.com/garikhgh/spring-cloud

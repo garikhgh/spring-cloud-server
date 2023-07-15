@@ -1,19 +1,20 @@
 package com.example.springcloudconfigserver.config;
 
-import org.springframework.security.config.annotation.SecurityBuilder;
-import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
 
-@EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfiguration {
-    @Override
-    public void init(SecurityBuilder builder) throws Exception {
+import static org.springframework.security.config.Customizer.withDefaults;
 
-    }
-
-    @Override
-    public void configure(SecurityBuilder builder) throws Exception {
-
+@Configuration
+public class WebSecurityConfig {
+    @Bean
+    protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(authz -> authz
+                        .anyRequest()
+                        .permitAll()).csrf().disable()
+                .httpBasic(withDefaults());
+        return http.build();
     }
 }
